@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup>
-import { defineProps } from "vue";
+
 
 // Define prop data
 const Props = defineProps({

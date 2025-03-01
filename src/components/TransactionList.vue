@@ -21,7 +21,7 @@
   </div>
 </template>
 <script setup>
-import { defineProps, ref, computed } from "vue";
+import {ref, computed } from "vue";
 
 // Define emit events
 const emit = defineEmits(["transactionDeleted"]);
