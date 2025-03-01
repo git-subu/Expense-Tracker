@@ -1,25 +1,32 @@
 <template>
-  <h3>Add new transaction</h3>
-  <form id="form" @submit.prevent="onSubmit">
-    <div class="form-control">
-      <label for="text">Text</label>
-      <input v-model="text" type="text" id="text" placeholder="Enter text..." />
-    </div>
-    <div class="form-control">
-      <label for="amount"
-        >Amount
+  <div>
+    <h3>Add new transaction</h3>
+    <form id="form" @submit.prevent="onSubmit">
+      <div class="form-control">
+        <label for="text">Description</label>
+        <input
+          v-model="text"
+          type="text"
+          id="text"
+          placeholder="Enter a transaction..."
+        />
+      </div>
+      <div class="form-control">
+        <label for="amount"
+          >Amount
 
-        <br />(negative - expense, positive - income)
-      </label>
-      <input
-        v-model="amount"
-        type="number"
-        id="amount"
-        placeholder="Enter amount.."
-      />
-    </div>
-    <button class="btn">Add transaction</button>
-  </form>
+          <br />(negative - expense, positive - income)
+        </label>
+        <input
+          v-model="amount"
+          type="number"
+          id="amount"
+          placeholder="Enter amount.."
+        />
+      </div>
+      <button class="btn">Add transaction</button>
+    </form>
+  </div>
 </template>
 <script setup>
 import { ref } from "vue";
@@ -33,7 +40,9 @@ const Toast = useToast();
 // Validation for input transaction
 const onSubmit = () => {
   if (!text.value || !amount.value) {
-    Toast.error("Both fields are necessary");
+    Toast.error("Both fields are necessary bitch");
+    text.value = "";
+    amount.value = "";
     return;
   }
 

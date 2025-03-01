@@ -1,13 +1,17 @@
 <template>
-  <Header></Header>
-  <div class="container">
-    <Balance :total="+total"></Balance>
-    <IncomeExpense :income="+income" :expenses="+expenses"></IncomeExpense>
-    <TransactionList
-      @transactionDeleted="handleTransactionDeleted"
-      :transactions="transactions"
-    ></TransactionList>
-    <AddTransaction @transactionSubmitted="handleTransaction"></AddTransaction>
+  <div>
+    <Header></Header>
+    <div class="container">
+      <Balance :total="+total"></Balance>
+      <IncomeExpense :income="+income" :expenses="+expenses"></IncomeExpense>
+      <TransactionList
+        @transactionDeleted="handleTransactionDeleted"
+        :transactions="transactions"
+      ></TransactionList>
+      <AddTransaction
+        @transactionSubmitted="handleTransaction"
+      ></AddTransaction>
+    </div>
   </div>
 </template>
 <script setup>
@@ -65,7 +69,7 @@ const handleTransaction = (transactionData) => {
     amount: transactionData.amount,
   });
   saveTransactionToLocalStorage();
-  Toast.success("Transaction added btch");
+  Toast.success("Transaction added", { timeout: 2000 });
 };
 
 // Generate uniqueId for each transaction
@@ -79,7 +83,7 @@ const handleTransactionDeleted = (id) => {
     (transaction) => transaction.id !== id
   );
   saveTransactionToLocalStorage();
-  Toast.success("You deleted a transaction btch");
+  Toast.success("You deleted a transaction", { timeout: 2000 });
 };
 
 // Save to localstorage
